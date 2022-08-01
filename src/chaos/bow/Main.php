@@ -23,14 +23,14 @@ class Main extends PluginBase implements Listener{
 
         if ($entity instanceof Player and $arrow instanceof Arrow) {
             if ($entity->getPosition()->getY() > 30) {
-                if ($power <= 0.8 and $entity->getMovementSpeed() != 0.0) {
+                if ($power <= 0.8 and $entity->getMovementSpeed() !== 0.0) {
                     $entity->setMotion($entity->getDirectionVector()->multiply(1.2));
                     $entity->broadcastAnimation(new HurtAnimation($entity));
                     $arrow->kill();
                     if ($entity->getHealth() > 1.0) {
                         $entity->setHealth($entity->getHealth() - 1.0);
                     }
-                } elseif (($power <= 0.8) and $entity->getMovementSpeed() != 0.0) {
+                } elseif (($power <= 0.8) and $entity->getMovementSpeed() !== 0.0) {
                     $arrow->kill();
                 }
             }
